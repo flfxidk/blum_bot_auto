@@ -6,9 +6,9 @@ if %errorlevel% equ 0 (
     echo "Winget уже установлен."
 ) else (
     echo "Устанавливаем winget..."
-    REM Скачиваем и устанавливаем winget через PowerShell
-    powershell -Command "Invoke-WebRequest -Uri 'https://aka.ms/getwinget' -OutFile '%TEMP%\AppInstaller.msi'"
-    msiexec /i "%TEMP%\AppInstaller.msi" /quiet /norestart
+    REM Скачиваем только winget MSI через PowerShell
+    powershell -Command "Invoke-WebRequest -Uri 'https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle' -OutFile '%TEMP%\AppInstaller.msixbundle'"
+    msiexec /i "%TEMP%\AppInstaller.msixbundle" /quiet /norestart
 )
 
 REM Проверка, установился ли winget успешно
